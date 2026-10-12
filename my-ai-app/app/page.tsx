@@ -5,7 +5,11 @@ import { Suspense, useState } from "react";
 
 export default function Chat() {
   return (
-    <Suspense fallback={<div className="mx-auto w-full max-w-md py-24">Loading chat...</div>}>
+    <Suspense
+      fallback={
+        <div className="mx-auto w-full max-w-md py-24">Loading chat...</div>
+      }
+    >
       <ChatInterface />
     </Suspense>
   );
