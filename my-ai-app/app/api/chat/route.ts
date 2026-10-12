@@ -3,6 +3,7 @@ import {
   UIMessage,
   convertToModelMessages,
   tool,
+  isStepCount,
   createUIMessageStreamResponse,
   toUIMessageStream,
 } from "ai";
@@ -15,6 +16,7 @@ export async function POST(req: Request) {
   const result = streamText({
     model: anthropic("claude-sonnet-5-5"),
     messages: await convertToModelMessages(messages),
+    stopWhen: isStepCount(5),
     tools: {
       weather: tool({
         description: "Get the weather in a location (fahrenheit)",
