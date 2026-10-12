@@ -27,6 +27,12 @@ function ChatInterface() {
             switch (part.type) {
               case "text":
                 return <div key={`${message.id}-${i}`}>{part.text}</div>;
+              case "tool-weather":
+                return (
+                  <pre key={`${message.id}-${i}`}>
+                    {JSON.stringify(part, null, 2)}
+                  </pre>
+                );
             }
           })}
         </div>
