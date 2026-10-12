@@ -1,9 +1,17 @@
 "use client";
 
 import { useChat } from "@ai-sdk/react";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 
 export default function Chat() {
+  return (
+    <Suspense fallback={<div className="mx-auto w-full max-w-md py-24">Loading chat...</div>}>
+      <ChatInterface />
+    </Suspense>
+  );
+}
+
+function ChatInterface() {
   const [input, setInput] = useState("");
   const { messages, sendMessage } = useChat();
   return (
